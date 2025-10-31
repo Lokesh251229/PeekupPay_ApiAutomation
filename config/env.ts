@@ -1,0 +1,12 @@
+export const ENV = {
+  API_BASE_URL_CASHIN: process.env.API_BASE_URL_CASHIN || 'https://pay.dev.q1.peekup.asia',
+  API_KEY: process.env.API_KEY || '1846e8e2-169d-42e9-bbb5-94ea4e8b7a74',
+  API_SECRET: process.env.API_SECRET || 'd62193ee-8c2c-48df-80e4-3a7c560512ce',
+  MERCHANT_ID: process.env.MERCHANT_ID || '98b6da7c-65d7-4c97-854f-ed06e7dd04e8',
+  AMOUNT: process.env.AMOUNT || 600,
+  PAYMENT_STATUS_INTERVAL_MS: Number(process.env.PAYMENT_STATUS_INTERVAL_MS) || 10000,
+  BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN || 'bot8336583937:AAFmSezPYiagRLNVpRK3rhIwkk9D8l0kvd4',
+  STATUS_BOT_TOKEN: process.env.TELEGRAM_STATUS_BOT_TOKEN || 'bot8397623843:AAG_GwGFOOgm9ILr9fTMyTyJcyCFw4i85pw',
+  STATUS_CHAT_ID: process.env.TELEGRAM_STATUS_CHAT_ID || '-4817174879',//'1915145383', //'1443133529',
+  QR_CHAT_ID: process.env.TELEGRAM_QR_CHAT_ID || '-5075455585',  //'1915145383',
+};

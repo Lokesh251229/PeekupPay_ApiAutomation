@@ -1,0 +1,152 @@
+{
+  "config": {
+    "configFile": "C:\\API Automation_peekup pay\\Peekuppay_payment_system\\playwright.config.ts",
+    "rootDir": "C:/API Automation_peekup pay/Peekuppay_payment_system/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "artifacts/metrics.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/API Automation_peekup pay/Peekuppay_payment_system/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "API Testing",
+        "name": "API Testing",
+        "testDir": "C:/API Automation_peekup pay/Peekuppay_payment_system/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.test\\.ts/"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.0",
+    "workers": 6,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "api\\cashin.test.ts",
+      "file": "api/cashin.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Hourly Cash-in Flow Monitoring",
+          "file": "api/cashin.test.ts",
+          "line": 17,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should perform cash-in API call and collect metrics",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 420000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "API Testing",
+                  "projectName": "API Testing",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1689,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m500\u001b[39m\nReceived array: \u001b[31m[200, 201]\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m500\u001b[39m\nReceived array: \u001b[31m[200, 201]\u001b[39m\n    at C:\\API Automation_peekup pay\\Peekuppay_payment_system\\tests\\api\\cashin.test.ts:136:28",
+                        "location": {
+                          "file": "C:\\API Automation_peekup pay\\Peekuppay_payment_system\\tests\\api\\cashin.test.ts",
+                          "column": 28,
+                          "line": 136
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 134 |\u001b[39m         console\u001b[33m.\u001b[39mlog(\u001b[32m'Wrote artifacts/cashin_result.json'\u001b[39m\u001b[33m,\u001b[39m failResult)\u001b[33m;\u001b[39m\n \u001b[90m 135 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 136 |\u001b[39m         expect([\u001b[35m200\u001b[39m\u001b[33m,\u001b[39m \u001b[35m201\u001b[39m])\u001b[33m.\u001b[39mtoContain(status)\u001b[33m;\u001b[39m \u001b[90m// This will fail the test and log the response\u001b[39m\n \u001b[90m     |\u001b[39m                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 137 |\u001b[39m       }\n \u001b[90m 138 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 139 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\API Automation_peekup pay\\Peekuppay_payment_system\\tests\\api\\cashin.test.ts",
+                            "column": 28,
+                            "line": 136
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m500\u001b[39m\nReceived array: \u001b[31m[200, 201]\u001b[39m\n\n\u001b[0m \u001b[90m 134 |\u001b[39m         console\u001b[33m.\u001b[39mlog(\u001b[32m'Wrote artifacts/cashin_result.json'\u001b[39m\u001b[33m,\u001b[39m failResult)\u001b[33m;\u001b[39m\n \u001b[90m 135 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 136 |\u001b[39m         expect([\u001b[35m200\u001b[39m\u001b[33m,\u001b[39m \u001b[35m201\u001b[39m])\u001b[33m.\u001b[39mtoContain(status)\u001b[33m;\u001b[39m \u001b[90m// This will fail the test and log the response\u001b[39m\n \u001b[90m     |\u001b[39m                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 137 |\u001b[39m       }\n \u001b[90m 138 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 139 |\u001b[39m\u001b[0m\n\u001b[2m    at C:\\API Automation_peekup pay\\Peekuppay_payment_system\\tests\\api\\cashin.test.ts:136:28\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "Failure Response (status 500): {\n  error: \u001b[33mtrue\u001b[39m,\n  error_code: \u001b[33m500\u001b[39m,\n  message: \u001b[32m'Internal server error'\u001b[39m,\n  data: { error: \u001b[32m'Payment processing failed'\u001b[39m },\n  refresh_token: \u001b[33mfalse\u001b[39m,\n  syntax_error: \u001b[32m''\u001b[39m\n}\n"
+                        },
+                        {
+                          "text": "Wrote artifacts/cashin_result.json {\n  externalId: \u001b[32m'ext-1761747173582'\u001b[39m,\n  success: \u001b[33mfalse\u001b[39m,\n  errorCode: \u001b[33m500\u001b[39m,\n  errorMessage: \u001b[32m'Internal server error'\u001b[39m,\n  errorCodeMessage: \u001b[32m'500 Internal server error'\u001b[39m,\n  errorReason: \u001b[32m'Payment processing failed'\u001b[39m\n}\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-29T14:12:53.562Z",
+                      "annotations": [],
+                      "attachments": [],
+                      "errorLocation": {
+                        "file": "C:\\API Automation_peekup pay\\Peekuppay_payment_system\\tests\\api\\cashin.test.ts",
+                        "column": 28,
+                        "line": 136
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "df7fa80fa65a72284419-9ad44cbe4668b8c43695",
+              "file": "api/cashin.test.ts",
+              "line": 19,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-10-29T14:12:52.453Z",
+    "duration": 2863.126,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,60 @@
+// 🧠 Context: You are an AI assistant helping generate API test cases using Playwright Test Runner.
+// Follow the Modular Component Pattern (MCP) for clean, maintainable, and reusable monitoring test cases.
+// The primary flow is the Cash-in API with HMAC-SHA256 signature generation.
+//
+// 📦 Project Structure Assumed:
+/*
+  ├── tests/
+  │   ├── api/
+  │   │   ├── paymentMonitor.test.ts // <- Main monitoring test suite
+  ├── utils/
+  │   ├── apiClient.ts             // <- Handles Playwright API calls (CashIn/CashOut/QR)
+  │   ├── testData.ts              // <- Central place for dynamic input data
+  │   ├── SlackClient.ts           // <- Utility for sending Slack alerts
+  │   ├── MetricStore.ts           // <- Utility for managing metrics and alerting logic
+  └── config/
+      └── env.ts                   // <- Holds environment-specific values
+/
+//
+// 🎯 Objective:
+// 1. Implement the HMAC-SHA256 Signature Generation logic in Playwright/TypeScript/Node.js to mirror the provided Postman pre-request script.
+// 2. Use the generated timestamp and signature as query parameters for the Cash-in API call.
+// 3. Integrate all flow components (API call, Metric accumulation, Alerting) into the paymentMonitor.test.ts file.
+//
+// 🧪 Test Scenario: Hourly Cash-in Flow Monitoring
+// The test must repeatedly execute the Cash-in API call (e.g., 5 times) to gather metrics.
+//
+// 🛠️ Generate FOUR full files with:
+//
+// ### 1. config/env.ts
+// - Defines all required environment variables (API_BASE_URL_CASHIN, API_KEY, API_SECRET, SLACK_WEBHOOK_URL, etc.).
+//
+// ### 2. utils/apiClient.ts
+// - Signature Logic: Implement a private helper function _generateSignature(body, timestamp) using Node.js crypto or a suitable library (like crypto-js or built-in crypto) to perform the HMAC-SHA256 logic based on the provided Postman pre-request script (body + timestamp).
+// - Cash-in Method: Exports a reusable initiateCashIn(data) method that calls the signature helper and performs the authenticated request.post().
+//
+// ### 3. utils/testData.ts
+// - Exports a function generateCashInPayload() that returns the base JSON body (including unique_id and externalPaymentId which should be made unique using a timestamp/UUID).
+//
+// ### 4. tests/api/paymentMonitor.test.ts
+// - Orchestration: Imports and uses all utilities (apiClient, MetricStore, testData, SlackClient).
+// - Looping: Uses a for loop to execute the Cash-in test multiple times.
+// - test.afterAll Hook: Calls the metric analysis and Slack alerting utilities.
+//
+// 📌 Key API Details:
+/
+  Endpoint: POST ${API_BASE_URL_CASHIN}/initiate/?timestamp={{timestamp}}&signature={{signature}}
+  Header: X-PPAY-APIKEY: 1c4d45dd-5968-4446-9e6b-3c9254466ceb (from ENV)
+  Body: (provided JSON payload)
+  API Secret: eede19ea-1a6a-4355-8f73-38faa9ee8458 (from ENV)
+  String to Sign: Raw JSON Body + Timestamp
+*/
+//
+// ✍️ Generate the full code snippets for the four required files, ensuring all Playwright and security conventions are strictly followed. (Note: Stub the MetricStore and SlackClient logic for brevity, focusing on the core API and Auth implementation).
+
+
+
+
+
+
+

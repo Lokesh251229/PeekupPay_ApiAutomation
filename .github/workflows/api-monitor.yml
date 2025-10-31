@@ -1,0 +1,57 @@
+name: Payment API Monitor
+
+on:
+  schedule:
+    - cron: '0 * * * *'   # runs every hour on the hour
+  workflow_dispatch:
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    env:
+      METRICS_PATH: artifacts/metrics.json
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate environment
+        run: npx ts-node scripts/validateEnv.ts
+
+      - name: Run Playwright API tests
+        run: npx playwright test --config=playwright.config.ts --reporter=list
+
+      - name: Upload metrics artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: metrics
+          path: artifacts/metrics.json
+
+      - name: Run aggregator & send Telegram alert
+        env:
+          # Generic bot/token used by older scripts (kept for backward compat)
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          # Preferred status bot token + friend chat id (used by the test/aggregator)
+          TELEGRAM_STATUS_BOT_TOKEN: ${{ secrets.TELEGRAM_STATUS_BOT_TOKEN }}
+          TELEGRAM_FRIEND_CHAT_ID: ${{ secrets.TELEGRAM_FRIEND_CHAT_ID }}
+        run: npx ts-node scripts/aggregate_and_alert.ts
+
+      - name: Store metrics in S3 (optional)
+        if: always()
+        env:
+          AWS_S3_BUCKET: ${{ secrets.S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          pip install awscli --upgrade --user
+          export PATH="$HOME/.local/bin:$PATH"
+          aws s3 cp artifacts/metrics.json s3://${{ secrets.S3_BUCKET }}/metrics/$(date -u +"%Y-%m-%dT%H:00:00Z")-metrics.json
